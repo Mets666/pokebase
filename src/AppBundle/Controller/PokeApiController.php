@@ -33,22 +33,6 @@ class PokeApiController extends Controller
 
         foreach ($data['moves'] as $move){
             $moves[] = str_replace("-"," ",$move['move']['name']);
-            foreach ($move['version_group_details'] as $move_details)
-            {
-                //var_dump($move['version_group_details']);
-                if ($move_details['version_group']['name'] == 'emerald'){
-
-                    if ($move_details['move_learn_method']['name'] == 'level-up'){
-                        $move_method[str_replace("-"," ",$move['move']['name'])] = 'level '. $move_details['level_learned_at'];
-                    }
-                    else
-                    {
-                        $move_method[str_replace("-"," ",$move['move']['name'])] = $move_details['move_learn_method']['name'];
-                    }
-                    //var_dump($move_details['move_learn_method']['name']);
-                }
-            }
-            //if ($move_details['version_group']['name'] = )
 
             //var_dump($move['version_group_details']);
         }
@@ -60,12 +44,18 @@ class PokeApiController extends Controller
         //var_dump($data['moves']);
         //var_dump($stats);
 
+        $level = 100;
+        $ev = 252;
+        $iv = 31;
+
+        $hp = ((2 * $stats['hp'] + $iv + ($ev/4)) * $level /100) + $level + 10;
+
         return $this->render('pokemon/api.html.twig', array(
+            'hp' => $hp,
             'name' => $data['name'],
             'types' => $types,
             'stats' => $stats,
             'moves' => $moves,
-            'move_method' => $move_method,
             'img' => $data['sprites']['front_default']
         ));
     }

@@ -4,14 +4,21 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-md-8">.col-md-8</div>
-        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-8">
+            <a href="{{  path('edit_pokemon')}} "> Back to edit</a>
+        </div>
+        <div class="col-md-4">
+
+        </div>
     </div>
     <h1>Add new pokemon:</h1>
 
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+
+
+
+    {{ form_start(add_form) }}
+    {{ form_errors(add_form) }}
+    {{ form_widget(add_form) }}
+    {{ form_end(add_form) }}
 
 {% endblock %}

@@ -10,7 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Pokemon;
-use AppBundle\Form\PokemonType;
+use AppBundle\Form\AddPokemonType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,19 +25,26 @@ class AddPokemonController extends Controller
     public function formAction(Request $request)
     {
         $pokemon = new Pokemon();
-        $form = $this->createForm(PokemonType::class, $pokemon);
+        $form = $this->createForm(AddPokemonType::class, $pokemon);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if($form->get('back')->isClicked()){
+                return $this->redirectToRoute('edit_pokemon');
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($pokemon);
             $em->flush();
+
+
             return $this->redirectToRoute('add_pokemon');
         }
 
+
         return $this->render('pokemon/add.html.twig', array(
-            'form' => $form->createView()
+            'add_form' => $form->createView()
         ));
     }
 }

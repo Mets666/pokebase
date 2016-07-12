@@ -1,0 +1,23 @@
+{% extends 'base.html.twig'%}
+
+{% block title %} Select and edit pokemon{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-8">.col-md-8</div>
+        <div class="col-md-4">.col-md-4</div>
+    </div>
+    <h1>Select and edit pokemon:</h1>
+    <a href="{{  path('add_pokemon')}} ">Add new pokemon</a>
+
+    {{ form_start(select_form) }}
+    {{ form_errors(select_form) }}
+    {{ form_widget(select_form) }}
+    {{ form_end(select_form) }}
+
+    {{ form_start(edit_form) }}
+    {{ form_errors(edit_form) }}
+    {{ form_widget(edit_form) }}
+    {{ form_end(edit_form) }}
+
+{% endblock %}

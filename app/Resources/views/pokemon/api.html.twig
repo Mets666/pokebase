@@ -8,6 +8,7 @@
         <h1>{{ name|capitalize }}</h1>
     </div>
     <div class="row">
+        <p>{{ hp }}</p>
         <div class="col-md-6">
             <h2>Types</h2>
             <ul>
@@ -40,11 +41,6 @@
                     </li>
                 {% endfor %}
 
-                {% for key, value in move_method|sort %}
-                    <li>
-                        {{ key }}: {{ value }}
-                    </li>
-                {% endfor %}
             </ul>
         </div>
     </div>

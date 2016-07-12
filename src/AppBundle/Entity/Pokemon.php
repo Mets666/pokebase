@@ -24,48 +24,107 @@ class Pokemon
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=50)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="pokedexId", type="integer")
+     * @ORM\Column(name="race", type="string", length=255)
      */
-    private $pokedexId;
+    private $race;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=50)
+     * @ORM\Column(name="nature", type="string", length=255)
      */
-    private $type;
+    private $nature;
 
     /**
-     * @var \stdClass
+     * @var int
      *
-     * @ORM\Column(name="preEvo", type="object", nullable=true)
-     * @ORM\OneToOne(targetEntity="Pokemon")
-     * @ORM\JoinColumn(name="preEvo_id", referencedColumnName="id")
+     * @ORM\Column(name="iv_hp", type="integer", options={"unsigned":true, "default":0})
      */
-    private $preEvo;
+    private $ivHp;
 
     /**
-     * @var \stdClass
+     * @var int
      *
-     * @ORM\Column(name="postEvo", type="object", nullable=true)
-     * @ORM\OneToOne(targetEntity="Pokemon")
-     * @ORM\JoinColumn(name="postEvo_id", referencedColumnName="id")
+     * @ORM\Column(name="iv_atk", type="integer", options={"unsigned":true, "default":0})
      */
-    private $postEvo;
+    private $ivAtk;
 
     /**
-     * @var bool
+     * @var int
      *
-     * @ORM\Column(name="gender", type="boolean")
+     * @ORM\Column(name="iv_def", type="integer", options={"unsigned":true, "default":0})
      */
-    private $gender;
+    private $ivDef;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="iv_spatk", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $ivSpatk;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="iv_spdef", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $ivSpdef;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="iv_spd", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $ivSpd;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ev_hp", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $evHp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ev_atk", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $evAtk;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ev_def", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $evDef;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ev_spatk", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $evSpatk;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ev_spdef", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $evSpdef;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ev_spd", type="integer", options={"unsigned":true, "default":0})
+     */
+    private $evSpd;
 
 
     /**
@@ -103,122 +162,340 @@ class Pokemon
     }
 
     /**
-     * Set pokedexId
+     * Set nature
      *
-     * @param integer $pokedexId
+     * @param string $nature
      *
      * @return Pokemon
      */
-    public function setPokedexId($pokedexId)
+    public function setNature($nature)
     {
-        $this->pokedexId = $pokedexId;
+        $this->nature = $nature;
 
         return $this;
     }
 
     /**
-     * Get pokedexId
-     *
-     * @return int
-     */
-    public function getPokedexId()
-    {
-        return $this->pokedexId;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Pokemon
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
+     * Get nature
      *
      * @return string
      */
-    public function getType()
+    public function getNature()
     {
-        return $this->type;
+        return $this->nature;
     }
 
     /**
-     * Set preEvo
+     * Set ivHp
      *
-     * @param \stdClass $preEvo
+     * @param integer $ivHp
      *
      * @return Pokemon
      */
-    public function setPreEvo($preEvo)
+    public function setIvHp($ivHp)
     {
-        $this->preEvo = $preEvo;
+        $this->ivHp = $ivHp;
 
         return $this;
     }
 
     /**
-     * Get preEvo
+     * Get ivHp
      *
-     * @return \stdClass
+     * @return int
      */
-    public function getPreEvo()
+    public function getIvHp()
     {
-        return $this->preEvo;
+        return $this->ivHp;
     }
 
     /**
-     * Set postEvo
+     * Set ivAtk
      *
-     * @param \stdClass $postEvo
+     * @param integer $ivAtk
      *
      * @return Pokemon
      */
-    public function setPostEvo($postEvo)
+    public function setIvAtk($ivAtk)
     {
-        $this->postEvo = $postEvo;
+        $this->ivAtk = $ivAtk;
 
         return $this;
     }
 
     /**
-     * Get postEvo
+     * Get ivAtk
      *
-     * @return \stdClass
+     * @return int
      */
-    public function getPostEvo()
+    public function getIvAtk()
     {
-        return $this->postEvo;
+        return $this->ivAtk;
     }
 
     /**
-     * Set gender
+     * Set ivDef
      *
-     * @param boolean $gender
+     * @param integer $ivDef
      *
      * @return Pokemon
      */
-    public function setGender($gender)
+    public function setIvDef($ivDef)
     {
-        $this->gender = $gender;
+        $this->ivDef = $ivDef;
 
         return $this;
     }
 
     /**
-     * Get gender
+     * Get ivDef
      *
-     * @return bool
+     * @return int
      */
-    public function getGender()
+    public function getIvDef()
     {
-        return $this->gender;
+        return $this->ivDef;
+    }
+
+    /**
+     * Set ivSpatk
+     *
+     * @param integer $ivSpatk
+     *
+     * @return Pokemon
+     */
+    public function setIvSpatk($ivSpatk)
+    {
+        $this->ivSpatk = $ivSpatk;
+
+        return $this;
+    }
+
+    /**
+     * Get ivSpatk
+     *
+     * @return int
+     */
+    public function getIvSpatk()
+    {
+        return $this->ivSpatk;
+    }
+
+    /**
+     * Set ivSpdef
+     *
+     * @param integer $ivSpdef
+     *
+     * @return Pokemon
+     */
+    public function setIvSpdef($ivSpdef)
+    {
+        $this->ivSpdef = $ivSpdef;
+
+        return $this;
+    }
+
+    /**
+     * Get ivSpdef
+     *
+     * @return int
+     */
+    public function getIvSpdef()
+    {
+        return $this->ivSpdef;
+    }
+
+    /**
+     * Set ivSpd
+     *
+     * @param integer $ivSpd
+     *
+     * @return Pokemon
+     */
+    public function setIvSpd($ivSpd)
+    {
+        $this->ivSpd = $ivSpd;
+
+        return $this;
+    }
+
+    /**
+     * Get ivSpd
+     *
+     * @return int
+     */
+    public function getIvSpd()
+    {
+        return $this->ivSpd;
+    }
+
+    /**
+     * Set evHp
+     *
+     * @param integer $evHp
+     *
+     * @return Pokemon
+     */
+    public function setEvHp($evHp)
+    {
+        $this->evHp = $evHp;
+
+        return $this;
+    }
+
+    /**
+     * Get evHp
+     *
+     * @return int
+     */
+    public function getEvHp()
+    {
+        return $this->evHp;
+    }
+
+    /**
+     * Set evAtk
+     *
+     * @param string $evAtk
+     *
+     * @return Pokemon
+     */
+    public function setEvAtk($evAtk)
+    {
+        $this->evAtk = $evAtk;
+
+        return $this;
+    }
+
+    /**
+     * Get evAtk
+     *
+     * @return string
+     */
+    public function getEvAtk()
+    {
+        return $this->evAtk;
+    }
+
+    /**
+     * Set evDef
+     *
+     * @param integer $evDef
+     *
+     * @return Pokemon
+     */
+    public function setEvDef($evDef)
+    {
+        $this->evDef = $evDef;
+
+        return $this;
+    }
+
+    /**
+     * Get evDef
+     *
+     * @return int
+     */
+    public function getEvDef()
+    {
+        return $this->evDef;
+    }
+
+    /**
+     * Set evSpatk
+     *
+     * @param integer $evSpatk
+     *
+     * @return Pokemon
+     */
+    public function setEvSpatk($evSpatk)
+    {
+        $this->evSpatk = $evSpatk;
+
+        return $this;
+    }
+
+    /**
+     * Get evSpatk
+     *
+     * @return int
+     */
+    public function getEvSpatk()
+    {
+        return $this->evSpatk;
+    }
+
+    /**
+     * Set evSpdef
+     *
+     * @param integer $evSpdef
+     *
+     * @return Pokemon
+     */
+    public function setEvSpdef($evSpdef)
+    {
+        $this->evSpdef = $evSpdef;
+
+        return $this;
+    }
+
+    /**
+     * Get evSpdef
+     *
+     * @return int
+     */
+    public function getEvSpdef()
+    {
+        return $this->evSpdef;
+    }
+
+    /**
+     * Set evSpd
+     *
+     * @param integer $evSpd
+     *
+     * @return Pokemon
+     */
+    public function setEvSpd($evSpd)
+    {
+        $this->evSpd = $evSpd;
+
+        return $this;
+    }
+
+    /**
+     * Get evSpd
+     *
+     * @return int
+     */
+    public function getEvSpd()
+    {
+        return $this->evSpd;
+    }
+
+
+
+    /**
+     * Set race
+     *
+     * @param string $race
+     *
+     * @return Pokemon
+     */
+    public function setRace($race)
+    {
+        $this->race = $race;
+
+        return $this;
+    }
+
+    /**
+     * Get race
+     *
+     * @return string
+     */
+    public function getRace()
+    {
+        return $this->race;
     }
 }
