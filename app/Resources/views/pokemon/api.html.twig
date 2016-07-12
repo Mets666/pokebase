@@ -39,6 +39,12 @@
                         <a href="{{ ('http://bulbapedia.bulbagarden.net/wiki/' ~ move|title ~ '_(move)')|replace({' ': "_"}) }}">(mirror)</a>
                     </li>
                 {% endfor %}
+
+                {% for key, value in move_method|sort %}
+                    <li>
+                        {{ key }}: {{ value }}
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
