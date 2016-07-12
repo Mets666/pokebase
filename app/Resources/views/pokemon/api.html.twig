@@ -1,0 +1,47 @@
+{% extends 'base.html.twig'%}
+
+{% block title %} Detail pokemon{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <h1>{{ name|capitalize }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Types</h2>
+            <ul>
+                {% for type in types %}
+                <li><a href="{{ ('http://pokemondb.net/type/' ~ type)|replace({' ': "-"}) }}">{{ type|capitalize }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <h2>Stats</h2>
+
+            <ul>
+                {% for  key, value in stats  %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+
+
+        </div>
+        <div class="col-md-6"><img src="{{ img }}"/></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Moves</h2>
+            <ul>
+                {% for move in moves|sort %}
+                    <li>
+                        <a href="{{ ('http://pokemondb.net/move/' ~ move)|replace({' ': "-"}) }}">{{ move|capitalize  }}</a>
+                        <a href="{{ ('http://bulbapedia.bulbagarden.net/wiki/' ~ move|title ~ '_(move)')|replace({' ': "_"}) }}">(mirror)</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock %}
