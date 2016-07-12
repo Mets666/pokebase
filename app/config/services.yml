@@ -9,9 +9,10 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
-    api.guzzlehttp:
+    api.guzzlehttp.client:
         class:        GuzzleHttp\Client
 
     api.manager:
         class:        AppBundle\Api\ApiManager
-        arguments:    ['%api.url%', '@api.guzzlehttp']
+        arguments:    ['@api.guzzlehttp.client', '%api.url%' ]
+

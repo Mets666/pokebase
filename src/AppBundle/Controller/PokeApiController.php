@@ -25,7 +25,7 @@ class PokeApiController extends Controller
 
         $response = $apiManager->sendRequest($pokeId);
 
-        $data = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
+        $data = $apiManager->jsonDecode($response);
         
         foreach ($data['types'] as $type){
             $types[] = $type['type']['name'];
