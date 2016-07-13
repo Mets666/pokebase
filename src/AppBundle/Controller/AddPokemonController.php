@@ -30,16 +30,17 @@ class AddPokemonController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if($form->get('back')->isClicked()){
-                return $this->redirectToRoute('edit_pokemon');
-            }
+            $data = $form->getData();
+            $parameters = array('id' => $data->getId());
+            //dump($data);
+            //exit(1);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($pokemon);
             $em->flush();
 
 
-            return $this->redirectToRoute('add_pokemon');
+            return $this->redirectToRoute('edit_pokemon', $parameters);
         }
 
 

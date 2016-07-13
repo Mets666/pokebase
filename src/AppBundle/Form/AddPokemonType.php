@@ -26,6 +26,8 @@ class AddPokemonType extends AbstractType
                 'label'  => 'Race: ',))
             ->add('nature', TextType::class, array(
                 'label'  => 'Nature: ',))
+            ->add('level', IntegerType::class, array(
+                'label'  => 'Level: ',))
             ->add('iv_hp', IntegerType::class, array(
                 'label'  => 'IV HP: ',))
             ->add('iv_atk', IntegerType::class, array(

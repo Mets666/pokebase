@@ -16,3 +16,9 @@ services:
         class:        AppBundle\Api\ApiManager
         arguments:    ['@api.guzzlehttp.client', '%api.url%' ]
 
+    api.json.parser:
+        class:        AppBundle\Api\JsonParser
+
+    api.stat.calculator:
+        class:        AppBundle\Calculation\StatCalculator
+

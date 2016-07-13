@@ -10,14 +10,14 @@
     <div class="row">
         <p>{{ hp }}</p>
         <div class="col-md-6">
-            <h2>Types</h2>
+            <h2>Types:</h2>
             <ul>
                 {% for type in types %}
                 <li><a href="{{ ('http://pokemondb.net/type/' ~ type)|replace({' ': "-"}) }}">{{ type|capitalize }}</a></li>
                 {% endfor %}
             </ul>
 
-            <h2>Stats</h2>
+            <h2>Base stats:</h2>
 
             <ul>
                 {% for  key, value in stats  %}
@@ -32,7 +32,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h2>Moves</h2>
+            <h2>Moves:</h2>
             <ul>
                 {% for move in moves|sort %}
                     <li>

@@ -3,21 +3,98 @@
 {% block title %} Select and edit pokemon{% endblock %}
 
 {% block body %}
+    {#Header#}
     <div class="row">
-        <div class="col-md-8">.col-md-8</div>
-        <div class="col-md-4">.col-md-4</div>
     </div>
-    <h1>Select and edit pokemon:</h1>
-    <a href="{{  path('add_pokemon')}} ">Add new pokemon</a>
 
-    {{ form_start(select_form) }}
-    {{ form_errors(select_form) }}
-    {{ form_widget(select_form) }}
-    {{ form_end(select_form) }}
+    {#Content#}
+    <div class="row">
+        {#Right column#}
+        <div class="col-md-8">
+            <div class="row">
+                <h1>Select pokemon:</h1>
+                {{ form_start(select_form) }}
+                {{ form_errors(select_form) }}
+                {{ form_widget(select_form) }}
+                {{ form_end(select_form) }}
+            </div>
 
-    {{ form_start(edit_form) }}
-    {{ form_errors(edit_form) }}
-    {{ form_widget(edit_form) }}
-    {{ form_end(edit_form) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>{{ data.name|capitalize }}</h3>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-6"><img src="{{ data.img }}"/></div>
+                </div>
+            </div>
+            <div class="row">
+                <h1>Edit pokemon:</h1>
+                <a href="{{  path('add_pokemon')}} ">Add new pokemon</a>
+            </div>
+
+            <div class="row">
+                {{ form_start(edit_form) }}
+                {{ form_errors(edit_form) }}
+                {{ form_widget(edit_form) }}
+                {{ form_end(edit_form) }}
+            </div>
+            <div class="row">
+                <h2>Calculated stats</h2>
+                <div class="col-md-2">
+                    <label>HP</label>
+                    <p>{{ stats.hp }}</p>
+                </div>
+                <div class="col-md-2">
+                    <label>Attack</label>
+                    <p>{{ stats.atk }}</p>
+                </div>
+                <div class="col-md-2">
+                    <label>Defense</label>
+                    <p>{{ stats.def }}</p>
+                </div>
+                <div class="col-md-2">
+                    <label>Sp. attack</label>
+                    <p>{{ stats.spatk }}</p>
+                </div>
+                <div class="col-md-2">
+                    <label>Sp. defence</label>
+                    <p>{{ stats.spdef }}</p>
+                </div>
+                <div class="col-md-2">
+                    <label>Speed</label>
+                    <p>{{ stats.spd }}</p>
+                </div>
+            </div>
+        </div>
+
+        {#Right column#}
+        <div class="col-md-4">
+            <h2>Types:</h2>
+            <ul>
+                {% for type in data.types %}
+                    <li><a href="{{ ('http://pokemondb.net/type/' ~ type)|replace({' ': "-"}) }}">{{ type|capitalize }}</a></li>
+                {% endfor %}
+            </ul>
+
+            <h2>Base stats:</h2>
+
+            <ul>
+                {% for  key, value in data.stats  %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Moves:</h2>
+            <ul>
+                {% for move in data.moves|sort %}
+                    <li>
+                        <a href="{{ ('http://pokemondb.net/move/' ~ move)|replace({' ': "-"}) }}">{{ move|capitalize  }}</a>
+                        <a href="{{ ('http://bulbapedia.bulbagarden.net/wiki/' ~ move|title ~ '_(move)')|replace({' ': "_"}) }}">(mirror)</a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
 
 {% endblock %}

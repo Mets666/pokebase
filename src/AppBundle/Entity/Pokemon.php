@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Pokemon
@@ -41,6 +42,20 @@ class Pokemon
      * @ORM\Column(name="nature", type="string", length=255)
      */
     private $nature;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="level", type="integer", options={"unsigned":true, "default":100})
+     *
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 100,
+     *      minMessage = "Minimal level is {{ limit }}",
+     *      maxMessage = "Maximal level is{{ limit }}"
+     * )
+     */
+    private $level;
 
     /**
      * @var int
@@ -497,5 +512,29 @@ class Pokemon
     public function getRace()
     {
         return $this->race;
+    }
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     *
+     * @return Pokemon
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
     }
 }
