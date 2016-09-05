@@ -22,8 +22,12 @@ class EditPokemonType extends AbstractType
             ->add('name', EntityType::class, array(
                 'class' => 'AppBundle:Pokemon',
                 'choice_label' => 'name',
+                'label' => 'Name:',
+                'attr' => array('name' => 'name', 'id' => 'ame', 'class' => 'form-control'),
             ))
-            ->add('select', SubmitType::class, array('label' => 'Select'
+            ->add('select', SubmitType::class, array(
+                'label' => 'Select',
+                'attr' => array('class' => 'btn btn-default btn-primary')
             ))
         ;
     }

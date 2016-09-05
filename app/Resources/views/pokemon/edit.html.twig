@@ -11,35 +11,33 @@
     <div class="row">
         {#Right column#}
         <div class="col-md-8">
+
             <div class="row">
-                <h1>Select pokemon:</h1>
-                {{ form_start(select_form) }}
-                {{ form_errors(select_form) }}
-                {{ form_widget(select_form) }}
-                {{ form_end(select_form) }}
+                <h2>Select pokemon:</h2>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
-                    <h3>{{ data.name|capitalize }}</h3>
+                    {{ form_start(select_form) }}
+                    <div class="form-group">
+                        {{ form_label(select_form.name) }}
+                        {{ form_errors(select_form.name) }}
+                        {{ form_widget(select_form.name) }}
+                    </div>
+                    {{ form_end(select_form) }}
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-2">
                     <div class="col-md-6"><img src="{{ data.img }}"/></div>
                 </div>
-            </div>
-            <div class="row">
-                <h1>Edit pokemon:</h1>
-                <a href="{{  path('add_pokemon')}} ">Add new pokemon</a>
+                <div class="col-md-4">
+                    <h4 class="vertical-centered">{{ data.name|capitalize }}</h4>
+                    <a class="btn btn-primary add_new_btn" href="{{  path('add_pokemon')}} ">Add new pokemon</a>
+
+                </div>
             </div>
 
             <div class="row">
-                {{ form_start(edit_form) }}
-                {{ form_errors(edit_form) }}
-                {{ form_widget(edit_form) }}
-                {{ form_end(edit_form) }}
-            </div>
-            <div class="row">
-                <h2>Calculated stats</h2>
+                <h3>Calculated stats:</h3>
                 <div class="col-md-2">
                     <label>HP</label>
                     <p>{{ stats.hp }}</p>
@@ -65,18 +63,138 @@
                     <p>{{ stats.spd }}</p>
                 </div>
             </div>
+
+            <div class="row">
+                <h2>Edit pokemon:</h2>
+            </div>
+
+            {{ form_start(edit_form) }}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(edit_form.name) }}
+                        {{ form_errors(edit_form.name) }}
+                        {{ form_widget(edit_form.name) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.race) }}
+                        {{ form_errors(edit_form.race) }}
+                        {{ form_widget(edit_form.race) }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(edit_form.nature) }}
+                        {{ form_errors(edit_form.nature) }}
+                        {{ form_widget(edit_form.nature) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.level) }}
+                        {{ form_errors(edit_form.level) }}
+                        {{ form_widget(edit_form.level) }}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="line">
+                <br/>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(edit_form.iv_hp) }}
+                        {{ form_errors(edit_form.iv_hp) }}
+                        {{ form_widget(edit_form.iv_hp) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.iv_atk) }}
+                        {{ form_errors(edit_form.iv_atk) }}
+                        {{ form_widget(edit_form.iv_atk) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.iv_def) }}
+                        {{ form_errors(edit_form.iv_def) }}
+                        {{ form_widget(edit_form.iv_def) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.iv_spatk) }}
+                        {{ form_errors(edit_form.iv_spatk) }}
+                        {{ form_widget(edit_form.iv_spatk) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.iv_spdef) }}
+                        {{ form_errors(edit_form.iv_spdef) }}
+                        {{ form_widget(edit_form.iv_spdef) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.iv_spd) }}
+                        {{ form_errors(edit_form.iv_spd) }}
+                        {{ form_widget(edit_form.iv_spd) }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_label(edit_form.ev_hp) }}
+                        {{ form_errors(edit_form.ev_hp) }}
+                        {{ form_widget(edit_form.ev_hp) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.ev_atk) }}
+                        {{ form_errors(edit_form.ev_atk) }}
+                        {{ form_widget(edit_form.ev_atk) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.ev_def) }}
+                        {{ form_errors(edit_form.ev_def) }}
+                        {{ form_widget(edit_form.ev_def) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.ev_spatk) }}
+                        {{ form_errors(edit_form.ev_spatk) }}
+                        {{ form_widget(edit_form.ev_spatk) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.ev_spdef) }}
+                        {{ form_errors(edit_form.ev_spdef) }}
+                        {{ form_widget(edit_form.ev_spdef) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(edit_form.ev_spd) }}
+                        {{ form_errors(edit_form.ev_spd) }}
+                        {{ form_widget(edit_form.ev_spd) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <br/>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form_widget(edit_form.save) }}
+                    </div>
+                </div>
+            </div>
+
+            {{ form_end(edit_form) }}
         </div>
 
         {#Right column#}
         <div class="col-md-4">
-            <h2>Types:</h2>
+            <h3>Types:</h3>
             <ul>
                 {% for type in data.types %}
                     <li><a href="{{ ('http://pokemondb.net/type/' ~ type)|replace({' ': "-"}) }}">{{ type|capitalize }}</a></li>
                 {% endfor %}
             </ul>
 
-            <h2>Base stats:</h2>
+            <h3>Base stats:</h3>
 
             <ul>
                 {% for  key, value in data.stats  %}
@@ -84,7 +202,7 @@
                 {% endfor %}
             </ul>
 
-            <h2>Moves:</h2>
+            <h3>Moves:</h3>
             <ul>
                 {% for move in data.moves|sort %}
                     <li>

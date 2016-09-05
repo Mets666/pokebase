@@ -21,38 +21,72 @@ class AddPokemonType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, array(
-                'label'  => 'Name: ',))
+                'label'  => 'Name: ',
+                'attr' => array('name' => 'name', 'id' => 'name', 'class' => 'form-control'),
+                ))
             ->add('race', TextType::class, array(
-                'label'  => 'Race: ',))
+                'label'  => 'Race: ',
+                'attr' => array('name' => 'race', 'id' => 'race', 'class' => 'form-control'),
+                ))
             ->add('nature', TextType::class, array(
-                'label'  => 'Nature: ',))
+                'label'  => 'Nature: ',
+                'attr' => array('name' => 'nature', 'id' => 'nature', 'class' => 'form-control'),
+                ))
             ->add('level', IntegerType::class, array(
-                'label'  => 'Level: ',))
+                'label'  => 'Level: ',
+                'attr' => array('name' => 'level', 'id' => 'level', 'class' => 'form-control'),
+                ))
             ->add('iv_hp', IntegerType::class, array(
-                'label'  => 'IV HP: ',))
+                'label'  => 'IV HP: ',
+                'attr' => array('name' => 'iv_hp', 'id' => 'iv_hp', 'class' => 'form-control'),
+                ))
             ->add('iv_atk', IntegerType::class, array(
-                'label'  => 'IV Attack: ',))
+                'label'  => 'IV Attack: ',
+                'attr' => array('name' => 'iv_atk', 'id' => 'iv_atk', 'class' => 'form-control'),
+                ))
             ->add('iv_def', IntegerType::class, array(
-                'label'  => 'IV Defence: ',))
+                'label'  => 'IV Defence: ',
+                'attr' => array('name' => 'iv_def', 'id' => 'iv_def', 'class' => 'form-control'),
+                ))
             ->add('iv_spatk', IntegerType::class, array(
-                'label'  => 'IV Spec. Attack: ',))
+                'label'  => 'IV Spec. Attack: ',
+                'attr' => array('name' => 'iv_spatk', 'id' => 'iv_spatk', 'class' => 'form-control'),
+                ))
             ->add('iv_spdef', IntegerType::class, array(
-                'label'  => 'IV Spec. Defence: ',))
+                'label'  => 'IV Spec. Defence: ',
+                'attr' => array('name' => 'iv_spdef', 'id' => 'iv_spdef', 'class' => 'form-control'),
+                ))
             ->add('iv_spd', IntegerType::class, array(
-                'label'  => 'IV Speed: ',))
+                'label'  => 'IV Speed: ',
+                'attr' => array('name' => 'iv_spd', 'id' => 'iv_spd', 'class' => 'form-control'),
+                ))
             ->add('ev_hp', IntegerType::class, array(
-                'label'  => 'EV HP: ',))
+                'label'  => 'EV HP: ','attr' => array('name' => 'ev_hp', 'id' => 'ev_hp', 'class' => 'form-control'),
+                ))
             ->add('ev_atk', IntegerType::class, array(
-                'label'  => 'EV Attack: ',))
+                'label'  => 'EV Attack: ',
+                'attr' => array('name' => 'ev_atk', 'id' => 'ev_atk', 'class' => 'form-control'),
+                ))
             ->add('ev_def', IntegerType::class, array(
-                'label'  => 'EV Defence: ',))
+                'label'  => 'EV Defence: ',
+                'attr' => array('name' => 'ev_def', 'id' => 'ev_def', 'class' => 'form-control'),
+                ))
             ->add('ev_spatk', IntegerType::class, array(
-                'label'  => 'EV Spec. Attack: ',))
+                'label'  => 'EV Spec. Attack: ',
+                'attr' => array('name' => 'ev_spatk', 'id' => 'ev_spatk', 'class' => 'form-control'),
+                ))
             ->add('ev_spdef', IntegerType::class, array(
-                'label'  => 'EV Spec. Defence: ',))
+                'label'  => 'EV Spec. Defence: ',
+                'attr' => array('name' => 'ev_spdef', 'id' => 'ev_spdef', 'class' => 'form-control'),
+                ))
             ->add('ev_spd', IntegerType::class, array(
-                'label'  => 'EV Speed: ',))
-            ->add('save', SubmitType::class, array('label' => 'Add'))
+                'label'  => 'EV Speed: ',
+                'attr' => array('name' => 'ev_spd', 'id' => 'ev_spd', 'class' => 'form-control'),
+                ))
+            ->add('save', SubmitType::class, array(
+                'label' => 'Save',
+                'attr' => array('class' => 'btn btn-default btn-success'),
+            ))
         ;
     }
 
